@@ -28,6 +28,7 @@ class ACRequest(object):
         self.subcommand = subcommand
         self.api_key = kwargs.get('api_key', None)
         self.ac_url = kwargs.get('ac_url', None)
+        self.use_ssl = kwargs.get('use_ssl', False)
         self.params = urlencode(kwargs.get('params', dict()))
 
         # Modified by Jon "Berkona" Monroe
@@ -46,8 +47,9 @@ class ACRequest(object):
     @property
     def base_url(self):
         """ Build our base API request URL"""
-        return 'https://%s/api.php?token=%s&path_info=' % \
-            (self.ac_url, self.api_key)
+        base = "https" if self.use_ssl else "http"
+        return '%s://%s/api.php?token=%s&path_info=' % \
+            (base, self.ac_url, self.api_key)
 
     @property
     def command_url(self):
