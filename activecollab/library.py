@@ -4,8 +4,8 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 from xml.dom.minidom import parse
 
-from qtimer.plugins.activecollab.constants import *
-from qtimer.plugins.activecollab.exceptions import ACCommandException
+from activecollab.constants import *
+from activecollab.exceptions import ACCommandException
 
 
 class ACRequest(object):
