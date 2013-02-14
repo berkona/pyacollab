@@ -6,6 +6,7 @@ from xml.dom.minidom import parse
 
 from activecollab.constants import *
 from activecollab.exceptions import ACCommandException
+from activecollab.settings import *
 
 
 class ACRequest(object):
@@ -26,8 +27,8 @@ class ACRequest(object):
         self.item_id = item_id
         self.sub_id = sub_id
         self.subcommand = subcommand
-        self.api_key = kwargs.get('api_key', None)
-        self.ac_url = kwargs.get('ac_url', None)
+        self.api_key = kwargs.get('api_key', API_KEY)
+        self.ac_url = kwargs.get('ac_url', AC_URL)
         self.params = urlencode(kwargs.get('params', dict()))
 
         # Modified by Jon "Berkona" Monroe
